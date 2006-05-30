@@ -654,9 +654,9 @@ formulations presented in Section \ref{sec:qap}.
 \begin{table}[t]
 \caption{Border length of random chips compared with the layouts produced by
 Row-epitaxial and GRASP with path-relinking. Reductions in border length are
-reported in percentages compared to the initial layout. Chips contain 25-base
-long probes uniformly generated and synchronously embedded. Border length and
-running times are averages over a set of five chips.\label{tab:graspr_reptx}}
+reported in percentages compared to the random layout. Chips contain 25-base
+long probes uniformly generated and asynchronously embedded. Border length and
+running times are averages over a set of ten chips.\label{tab:graspr_reptx}}
 \vspace*{2ex}
 \scriptsize{
 \begin{tabular}{crrcrrrcrrr}
@@ -664,13 +664,13 @@ running times are averages over a set of five chips.\label{tab:graspr_reptx}}
 Chip      & Number of  & Border & & Border & Reduction & Time          & & Border & Reduction & Time   \\
 dimension & probes     & length & & length & (\%)      & (sec.)        & & length & (\%)      & (sec.) \\
 \hline
-6\,x\,6   &  36 & 2\,239.20 & & 1\,942.40 & 13.25 & 0.010 & & 1\,882.40 & 15.93 & 2.991   \\
-7\,x\,7   &  49 & 3\,115.20 & & 2\,675.60 & 14.11 & 0.020 & & 2\,621.60 & 15.84 & 7.074   \\
-8\,x\,8   &  64 & 4\,202.40 & & 3\,514.00 & 16.38 & 0.024 & & 3\,481.20 & 17.16 & 13.568  \\
-9\,x\,9   &  81 & 5\,420.00 & & 4\,471.20 & 17.51 & 0.028 & & 4\,460.40 & 17.70 & 28.076  \\
-10\,x\,10 & 100 & 6\,740.40 & & 5\,556.20 & 17.57 & 0.034 & & 5\,536.00 & 17.87 & 55.430  \\
-11\,x\,11 & 121 & 8\,212.00 & & 6\,726.80 & 18.09 & 0.040 & & 6\,734.80 & 17.99 & 84.659  \\
-12\,x\,12 & 144 & 9\,872.00 & & 7\,975.20 & 19.21 & 0.044 & & 8\,038.00 & 18.58 & 148.196 \\
+$6\times 6$   &  36 & 1\,989.20 & & 1\,714.60 & 13.80 & 0.01 & & 1\,672.20 & 15.94 &   2.73 \\
+$7\times 7$   &  49 & 2\,783.20 & & 2\,354.60 & 15.40 & 0.02 & & 2\,332.60 & 16.19 &   6.43 \\
+$8\times 8$   &  64 & 3\,721.20 & & 3\,123.80 & 16.05 & 0.03 & & 3\,099.13 & 16.72 &  12.49 \\
+$9\times 9$   &  81 & 4\,762.00 & & 3\,974.80 & 16.53 & 0.05 & & 3\,967.20 & 16.69 &  25.96 \\
+$10\times 10$ & 100 & 5\,985.20 & & 4\,895.60 & 18.20 & 0.06 & & 4\,911.40 & 17.94 &  47.57 \\
+$11\times 11$ & 121 & 7\,288.40 & & 5\,954.40 & 18.30 & 0.10 & & 5\,990.73 & 17.80 &  87.48 \\
+$12\times 12$ & 144 & 8\,714.00 & & 7\,086.20 & 18.68 & 0.11 & & 7\,159.80 & 17.84 & 152.42 \\
 \hline
 %% Experiments were conducted on a Sun Fire V1280 server with 900Mhz UltraSparc III+ processors
 %% and 96 Gb of RAM under similar load balances.
@@ -680,23 +680,23 @@ dimension & probes     & length & & length & (\%)      & (sec.)        & & lengt
 \begin{table}[t]
 \caption{Average conflict indices of random chips compared with the layouts produced by
 Row-epitaxial and GRASP with path-relinking. Reductions in conflict indices are
-reported in percentages compared to the initial layout. Chips contain 25-base
-long probes uniformly generated and synchronously embedded. Conflict indices and
-running times are averages over a set of five chips.\label{tab:graspr_reptx_ci}}
+reported in percentages compared to the random layout. Chips contain 25-base
+long probes uniformly generated and asynchronously embedded. Conflict indices and
+running times are averages over a set of ten chips.\label{tab:graspr_reptx_ci}}
 \vspace*{2ex}
 \scriptsize{
 \begin{tabular}{crrcrrrcrrr}
           &            & Random & & \multicolumn{3}{c}{Row-epitaxial}  & & \multicolumn{3}{c}{GRASP with path-relinking}  \\ \cline{3-3} \cline{5-7} \cline{9-11}
-Chip      & Number of  & Border & & Border & Reduction & Time          & & Border & Reduction & Time   \\
-dimension & probes     & length & & length & (\%)      & (sec.)        & & length & (\%)      & (sec.) \\
+Chip      & Number of  & Avg. C.& & Avg. C.& Reduction & Time          & & Avg. C.& Reduction & Time   \\
+dimension & probes     & Index  & & Index  & (\%)      & (sec.)        & & Index  & (\%)      & (sec.) \\
 \hline
-6\,x\,6   &  36 & 2\,239.20 & & 1\,942.40 & 13.25 & 0.010 & & 1\,882.40 & 15.93 & 2.991   \\
-7\,x\,7   &  49 & 3\,115.20 & & 2\,675.60 & 14.11 & 0.020 & & 2\,621.60 & 15.84 & 7.074   \\
-8\,x\,8   &  64 & 4\,202.40 & & 3\,514.00 & 16.38 & 0.024 & & 3\,481.20 & 17.16 & 13.568  \\
-9\,x\,9   &  81 & 5\,420.00 & & 4\,471.20 & 17.51 & 0.028 & & 4\,460.40 & 17.70 & 28.076  \\
-10\,x\,10 & 100 & 6\,740.40 & & 5\,556.20 & 17.57 & 0.034 & & 5\,536.00 & 17.87 & 55.430  \\
-11\,x\,11 & 121 & 8\,212.00 & & 6\,726.80 & 18.09 & 0.040 & & 6\,734.80 & 17.99 & 84.659  \\
-12\,x\,12 & 144 & 9\,872.00 & & 7\,975.20 & 19.21 & 0.044 & & 8\,038.00 & 18.58 & 148.196 \\
+$6\times 6$   &  36 & 524.28 & & 495.15 & 5.56 & 0.05 & & 467.08 & 10.91 &   3.68 \\
+$7\times 7$   &  49 & 558.25 & & 521.90 & 6.51 & 0.07 & & 489.32 & 12.35 &   8.84 \\
+$8\times 8$   &  64 & 590.51 & & 551.84 & 6.55 & 0.09 & & 515.69 & 12.67 &  19.48 \\
+$9\times 9$   &  81 & 613.25 & & 568.62 & 7.28 & 0.11 & & 533.79 & 12.96 &  38.83 \\
+$10\times 10$ & 100 & 628.50 & & 576.49 & 8.28 & 0.11 & & 539.69 & 14.13 &  73.09 \\
+$11\times 11$ & 121 & 642.72 & & 588.91 & 8.37 & 0.12 & & 551.41 & 14.21 & 145.67 \\
+$12\times 12$ & 144 & 656.86 & & 598.21 & 8.93 & 0.12 & & 561.21 & 14.56 & 249.19 \\
 \hline
 %% Experiments were conducted on a Sun Fire V1280 server with 900Mhz UltraSparc III+ processors
 %% and 96 Gb of RAM under similar load balances.
