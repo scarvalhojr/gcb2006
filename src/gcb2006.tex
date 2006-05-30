@@ -506,8 +506,8 @@ $\theta=0$ and $c=1/2$, we obtain that $d_{kl} + d_{lk} = H_{kl} = H_{lk}$,
 where $H_{kl}$ denotes the  Hamming distance between the embeddings of probes
 $p_k$ and $p_l$.
 
-It now follows that, in the notation of Section~\ref{sec:model}, for a given
-assignment $\pi$, we have
+It now follows that for a given assignment $\pi$, we have, in the notation of
+Section~\ref{sec:model}, 
 $f_{ij} d_{\pi(i)\pi(j)} = \sum_{t=1}^T\, \delta(p_{\pi(i)},p_{\pi(j)},t) 
 \cdot \omega(p_{\pi(i)},t)$. The objective
 function~(\ref{eq:qap_def}) then becomes
@@ -683,8 +683,7 @@ $12\times 12$ & 144 & 8\,714.00 & & 7\,086.20 & 18.68 & 0.11 & & 7\,159.80 & 17.
 
 \begin{table}[t]
 \caption{Average conflict indices of random chips compared with the layouts produced by
-Row-epitaxial and GRASP with path-relinking. Reductions in conflict indices are
-reported in percentages compared to the random layout.\label{tab:graspr_reptx_ci}}
+Row-epitaxial and GRASP with path-relinking.\label{tab:graspr_reptx_ci}}
 \vspace*{2ex}
 \scriptsize{
 \begin{tabular}{crrcrrrcrrr}
@@ -720,10 +719,9 @@ with a probe minimizing the resulting conflict index on that spot. GRASP-PR
 consistently produces better layouts on all chip dimensions, achieving up to
 $6.38$\% less conflicts on 10\,x\,10 chips, for example, when compared to Row-epitaxial.
 In terms of running times, however, GRASP-PR is even slower for the case of conflict
-index minimization. One reason is that it takes more time to compute matrices $F$ and
-$D$ in the conflict index model as their definition are clearly more elaborate.
-However, we also observed that GRASP-PR requires more time to solve the QAP with
-distance matrices containing less zero entries.
+index minimization. This is because it takes more time to compute matrices $F$ and
+$D$ in the conflict index model as they are clearly more elaborate. However, GRASP-PR
+also seems to be faster when the distance matrices contain more zero entries.
 
 The gains in terms of conflict index of both approaches are clearly less than the
 gains in terms of border length. This may be because the embeddings are fixed and the
