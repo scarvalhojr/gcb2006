@@ -115,7 +115,7 @@ For this reason, the problem has been traditionally tackled in two phases.
 First, an initial embedding of the probes is fixed and an arrangement of these
 embeddings on the chip with minimum border conflicts is sought. This is
 usually referred to as the \emph{placement}. Second, a \emph{post-placement}
-optimization phase re-embeds the probes considering its location on the chip,
+optimization phase re-embeds the probes considering their location on the chip,
 in such a way that the conflicts with the neighboring spots are further
 reduced.
 
@@ -139,7 +139,7 @@ Hannenhalli and co-workers \cite{HANNENHALLI02} were the first to give a formal
 definition of the problem
 of unintended illumination in the production of microarrays. They formulated the
 \emph{Border Length Minimization Problem}, which aims at finding an arrangement
-of the probes together with their embeddings in such a way the number of border
+of the probes together with their embeddings in such a way that the number of border
 conflicts during mask exposure steps is minimal.
 
 The \emph{border length}~$\mathcal{B}_t$ of mask~$m_{t}$ is defined as
@@ -257,7 +257,28 @@ faulty $p$-probes.
 \begin{picture}(190,105)
 \footnotesize{
 \put(0,0){\makebox(190,105){
-  \input{position_weights}
+\begin{picture}(0,0)%
+\includegraphics{position_weights}%
+\end{picture}%
+\begingroup
+\setlength{\unitlength}{0.0200bp}%
+\begin{picture}(9900,5940)(0,0)%
+\put(1250,1500){\makebox(0,0)[r]{\strut{} 0}}%
+\put(1250,2157){\makebox(0,0)[r]{\strut{} 2}}%
+\put(1250,2813){\makebox(0,0)[r]{\strut{} 4}}%
+\put(1250,3470){\makebox(0,0)[r]{\strut{} 6}}%
+\put(1250,4127){\makebox(0,0)[r]{\strut{} 8}}%
+\put(1250,4783){\makebox(0,0)[r]{\strut{} 10}}%
+\put(1250,5440){\makebox(0,0)[r]{\strut{} 12}}%
+\put(1647,1000){\makebox(0,0){\strut{} 0}}%
+\put(3118,1000){\makebox(0,0){\strut{} 5}}%
+\put(4589,1000){\makebox(0,0){\strut{} 10}}%
+\put(6061,1000){\makebox(0,0){\strut{} 15}}%
+\put(7532,1000){\makebox(0,0){\strut{} 20}}%
+\put(9003,1000){\makebox(0,0){\strut{} 25}}%
+%\put(5325,250){\makebox(0,0){\strut{}$b_{s,k}$}}%
+\end{picture}%
+\endgroup
 }}}
 \end{picture}
 %%
@@ -275,16 +296,16 @@ faulty $p$-probes.
 \label{fig:conflictindex}
 \end{figure}
 
-Note the following relation between conflict index and border length:
+Note the following relation between conflict index and border length.
 Define $\delta(p,p',t):=1$ if $p'$ is a direct neighbor of $p$ and is
-unmasked in step $t$, and $:=0$ otherwise.  Define $\omega(p,t):=1$ if
-$p$ is masked in step $t$, and $:=0$ otherwise. Then $\sum_p\,
+unmasked at step $t$, and $:=0$ otherwise.  Define $\omega(p,t):=1$ if
+$p$ is masked at step $t$, and $:=0$ otherwise. Then $\sum_p\,
 \mathcal{C}(p) = 2 \sum_{t=1}^T\, \mathcal{B}_t$, as each border
-conflict is counted twice, once for $p'$ and once for $p$. Therefore
+conflict is counted twice, once for $p'$ and once for $p$. Therefore,
 border length and total conflict are equivalent for this particular
 choice of $\delta$ and $\omega$. For our choice~(\ref{eq:dist_weight})
-and~(\ref{eq:pos_mult}), they are still correlated: a good layout has
-both low border lengths and low conflict indices.
+and~(\ref{eq:pos_mult}), they are not equivalent but still correlated:
+a good layout has both low border lengths and low conflict indices.
 
 
 % ==============================================================================
@@ -311,7 +332,7 @@ otherwise pre-computed) embeddings. Post-placement optimizations such
 as the Chessboard \cite{KAHNG02} exist but separate the embedding problem from the
 placement problem.
 
-The border length problem
+The Border Length problem
 was first formally addressed in~\cite{HANNENHALLI02}. The article reports that
 the first Affymetrix chips were designed using a heuristic for the traveling
 salesman problem (TSP). The idea consists of building a weighted graph with
@@ -328,8 +349,8 @@ to insert probes in spots adjacent to already filled spots. Priority is given
 to spots with the largest numbers of filled neighbors. At each iteraction, it
 examines all non-filled spots and finds a non-assigned probe with
 minimum sum of Hamming distances to the neighboring probes, employing
-a greedy heuristic to select the next spot.  A further 10\% reduction in
-border conflict over TSP\,+\,1-threading is claimed.
+a greedy heuristic to select the next spot to be filled. A further 10\%
+reduction in border conflict over TSP\,+\,1-threading is claimed.
 
 \ignore{
 The major problem with the epitaxial and the TSP-based algorithm is that they
@@ -379,7 +400,7 @@ $h(c_1,c_2)$, the Hamming distance between their embeddings. Similarly, it
 selects $c_3$ and $c_4$ maximizing the sum of Hamming distance between these
 four probes, which are called centroids. All other probes $p \in \mathcal{P}$
 are then compared to the centroids and assigned to the sub-set $\mathcal{P}_k$
-associated with $c_k$ with minimum $h(p,c_k)$. The chip is divided into four
+associated with $c_k$ that has minimum $h(p,c_k)$. The chip is divided into four
 quadrants, each being assigned to a sub-set $\mathcal{P}_k$.  The procedure
 is repeated recursively on each quadrant until a given recursion depth is
 reached. In the end, the Row-epitaxial algorithm is used to produce the
@@ -545,7 +566,7 @@ border lengths or conflict indices.
 %%
 \ignore{including approaches based on tabu search, simulated annealing and genetic algorithms}
 
-As an example, we use a QAP heuristics called GRASP~\cite{LI94}
+As an example, we used a general QAP heuristic known as GRASP~\cite{LI94}
 (Greedy Randomized Adaptive Search Procedure), and an improved version
 called GRASP with path-relinking~\cite{OLIVEIRA04}.  GRASP is
 comprised of two phases: a construction phase where a random feasible
@@ -704,7 +725,7 @@ $12\times 12$ & 144 & 656.86 & & 598.21 & 8.93 & 0.12 & & 561.21 & 14.56 & 249.1
 
 Our results show that GRASP-PR produces layouts with lower border lengths than
 Row-epitaxial on the smaller chips. On 6\,x\,6 chips, GRASP-PR
-outperforms Row-epitaxial by $2.14$ percentage points on average when compared to
+outperforms Row-epitaxial by $2.14$ percentage points on average, when compared to
 the initial random layout. On 9\,x\,9 chips, however, this difference drops to
 $0.16$ percentage point, while Row-epitaxial generates better layouts on 11\,x\,11
 or larger chips.
@@ -719,17 +740,16 @@ with a probe minimizing the resulting conflict index on that spot. GRASP-PR
 consistently produces better layouts on all chip dimensions, achieving up to
 $6.38$\% less conflicts on 10\,x\,10 chips, for example, when compared to Row-epitaxial.
 In terms of running times, however, GRASP-PR is even slower for the case of conflict
-index minimization. This is because it takes more time to compute matrices $F$ and
-$D$ in the conflict index model as they are clearly more elaborate. However, GRASP-PR
-also seems to be faster when the distance matrices contain more zero entries.
+index minimization. Reasons are two-fold. First, the definitions of matrices $F$ and $D$
+are more elaborate in the conflict index model. Second, the distance matrix contains
+less zero entries, which seems to increase the running time of GRASP.
 
 The gains in terms of conflict index of both approaches are clearly less than the
 gains in terms of border length. This may be because the embeddings are fixed and the
 reduction of conflicts is restricted to the relocation of the probes, which only
 accounts for one part of the conflict index model. The fact that the distance matrix
-contains less zero entries with the conflict index formulation, however, might explain
-why GRASP-PR performs better in terms of conflict index minimization when compared to
-Row-epitaxial.
+contains less zero entries, however, might explain why GRASP-PR performs better in
+terms of conflict index minimization when compared to Row-epitaxial.
 
 Because of the large number of probes on industrial microarrays, it is not
 feasible to use GRASP-PR (or any other QAP method) to design an
@@ -749,10 +769,10 @@ into account the conflicts due to the spots around the window. Otherwise, a
 new layout with less internal conflicts could be achieved at the expense of an
 increase of conflicts on the borders of the window.
 
-A simple way of preventing this situation is to solve a larger QAP instance
+A simple way of preventing this problem is to solve a larger QAP instance
 consisting of the spots inside the window as well as those around it. The
 spots outside the window obviously must remain unchanged, and that can be done
-by fixing the corresponding elements of the permutation $\pi$. Then,
+by fixing the corresponding elements of the permutation $\pi$. Note that
 there is no need to compute $f_{ij}$ if spots $i$ and $j$ are both outside the
 window, nor $d_{kl}$ if probes $k$ and $l$ are assigned to spots outside the
 window.
@@ -762,7 +782,7 @@ We have identified the probe placement or microarray layout problem with
 general distance-dependent and position-dependent weights as a (specially
 structured) quadratic assignment problem. QAPs are notoriously hard to solve,
 and currently known exact methods start to take prohibitively long already for
-slightly more than $20$ objects, i.e., we barely could solve the problem for
+slightly more than $20$ objects, i.e., we could barely solve the problem for
 $5\times 5$ arrays. However, the literature on QAP heuristics is rich,
 as many problems in operations research can be modeled as QAPs. Here we used
 one such heuristic to identify the potential of the
@@ -829,11 +849,9 @@ Specific and nonspecific hybridization of oligonucleotide probes on microarrays.
 {\it Biophysical Journal}, {\bf 89}, 337--352.
 }
 
-\bibitem{CARVALHO06}
-de Carvalho Jr., S., Rahmann, S.:
+\bibitem{CARVALHO06} de Carvalho Jr., S., Rahmann, S. (2006)
 Improving the Layout of Oligonucleotide Microarrays: Pivot Partitioning.
-Submitted (2006).
-
+In {\it Workshop on Algorithms in Bioinformatics (WABI)}, LNBI. Springer.
 
 \bibitem{CELA98} \c{C}ela,E. (1998) {\it The Quadratic
 Assignment Problem: Theory and Algorithms}. Kluwer, Massachessets, USA.
